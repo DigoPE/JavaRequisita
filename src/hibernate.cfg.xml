@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+		
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- Configurações da Conexão -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/db_projeto</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">1234</property>
+		
+		<!-- Pool de conexões JDBC -->
+		<property name="connection.pool_size">1</property>
+		
+		<!-- Dialeto MySQL apenas com tabelas relacionadas-->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<!-- Dialeto MySQL geral-->
+		<!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property>-->
+
+		<!-- Gerenciamento de Sessão -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Desabilita Cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+		<!-- Habilita a Cache (Otimiza a operação de cache de segundo nível para minimizar as gravações, ao custo de leituras mais freqüentes) -->
+		<!--<property name="hibernate.cache.use_minimal_puts">true</property>-->
+		
+		<!-- Exibe os comandos SQL para ajudar no desenvolvimento -->
+		<property name="show_sql">true</property>
+		<!--<property name="hibernate.show_sql">true</property>-->
+		
+		<!-- Cria as Tabelas apartir do Hibernate, o que for alterado no código, será refletido nas tabelas.  -->
+		<!-- Existe o create = dropa a tabela e cria novamente, update atualiza as tabelas ja criadas e validade = apenas valida. É usada quando o sistema já está em uso. -->
+		<property name="hbm2ddl.auto">validade</property>
+	
+		<!-- Imprime o SQL no registro e no console. -->
+		<!--<property name="hibernate.format_sql">false</property> -->
+
+		<!-- O Mapping, serve para mapear entidades (Colocando o nome da cada tabela.-->
+		<mapping class="com.projetorodrigo.domain.Usuario" /> 
+		<mapping class="com.projetorodrigo.domain.Telefone" />
+		
+	</session-factory>
+</hibernate-configuration>

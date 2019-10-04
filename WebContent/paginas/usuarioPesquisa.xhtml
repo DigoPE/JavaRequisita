@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	<ui:define name="metadata">
+		<f:metadata>
+							<!-- É como se fosse o OnLoad -->
+			<f:event listener="#{usuarioBean.carregarPesq}" type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
+
+	<ui:composition template="/templates/modeloGeral.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<h:outputText value="Fabricantes"/>
+				</f:facet>
+			</p:toolbar>
+<!-- 				<h:panelGrid columns="4"> -->
+<!-- 					<p:outputLabel value="Descrição" /> -->
+<!-- 					<p:inputText maxlength="50" size="30" /> -->
+<!-- 					<p:commandButton value="Buscar"/> -->
+<!-- 					<p:commandButton value="Novo" action="/paginas/usuarioCadastro.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-close"/> -->
+<!-- 				</h:panelGrid> -->
+				<p:dataTable emptyMessage="Nenhum Registro Encontrado." value="#{usuarioBean.listaFabricante}" 
+				filteredValue="#{usuarioBean.listaFabricanteFiltrado}"
+				var="usuarioList" rows="6" paginator="true">
+				<!-- Comando para colocar o botão no rodapé da listagem -->
+				<f:facet name="footer">
+					<p:button value="Novo" outcome="/paginas/usuarioCadastro.xhtml?faces-redirect=true" ajax="false" icon="ui-docnovo">
+						<f:param name="usuAcao" value="Novo"/>
+					</p:button>
+				</f:facet>
+				
+					<p:column headerText="Código">
+						<h:outputText value="#{usuarioList.codigo}"/>
+					</p:column>					<!-- Filtra por descrição 					Ordena por descrição -->
+					<p:column headerText="Descrição" filterBy="#{usuarioList.descricao}" sortBy="#{usuarioList.descricao}">
+						<h:outputText value="#{usuarioList.descricao}"/>
+					</p:column>
+					<p:column headerText="Opções">
+						<p:button value="Excluir" outcome="/paginas/usuarioCadastro.xhtml" ajax="false" icon="ui-excluir">
+							<f:param name="usucod" value="#{usuarioList.codigo}" />
+							<f:param name="usuAcao" value="Excluir"/>
+						</p:button>
+						<p:button value="Editar" outcome="/paginas/usuarioCadastro.xhtml" ajax="false" icon="ui-editar">
+							<f:param name="usucod" value="#{usuarioList.codigo}" />
+							<f:param name="usuAcao" value="Editar"/>
+						</p:button>
+					</p:column>
+				</p:dataTable>
+			
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

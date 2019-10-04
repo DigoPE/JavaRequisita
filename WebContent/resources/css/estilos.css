@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+.ui-widget, .ui-widget, .ui-widget{
+	font-size: 95% !important;
+}
+.ui-button {
+	height:30px;
+	width: 100px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+.ui-ok {
+	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/img/ok_16.png") !important;
+}
+.ui-salvar {
+	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/img/salvar_16.png") !important;
+}
+.ui-voltar{
+	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/img/esquerda_16.png") !important;
+}
+.ui-editar{
+	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/img/edit_16.png") !important;
+} 
+.ui-excluir{
+	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/img/lixeira_16.png") !important;
+}
+.ui-docnovo{
+	background-image: url("#{facesContext.externalContext.request.contextPath}/resources/img/docnovo_16.png") !important;
+}  
+

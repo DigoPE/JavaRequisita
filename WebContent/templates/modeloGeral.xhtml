@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<!-- Metadata para funcionar como se fosse um auxilio a um OnLoad do HTML -->
+<ui:insert name="metadata" />
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Projeto Rodrigo</title>
+	<h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+
+ 
+<h:body>
+	<!-- Mensagem personalizadas de alertas do sistema --> 
+	<p:growl id="msgGlobal" showDetail="false" sticky="true" /> 
+
+	<p:layout fullPage="true">
+	    <p:layoutUnit header="Sistema Projeto Desafio Rodrigo" position="north" size="100" resizable="true" closable="true" collapsible="true">
+	        <h:outputText value="North unit content." />Norte
+	    </p:layoutUnit>
+	 
+	    <p:layoutUnit position="south" size="100" header="Desenvolvido por Rodrigo Barros" resizable="true" closable="true" collapsible="true">
+	        <h:outputText value="South unit content." />Sul
+	    </p:layoutUnit>
+	 	
+	 	<p:layoutUnit position="west" size="250" header="Left" resizable="false" closable="true" collapsible="true">
+			<h:form>
+			    <p:growl autoUpdate="true"/>
+			    <p:panelMenu style="width:250px">
+			        <p:submenu label="Arquivo">
+			            <p:menuitem value="Principal" outcome="/paginas/principal.xhtml" icon="ui-icon-disk" />
+			            <p:menuitem value="Sair" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+			        </p:submenu>
+			        <p:submenu label="Cadastro">
+			            <p:menuitem value="Usuários" action="/paginas/usuarioPesquisa.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-close"/>
+			            <p:menuitem value="Telefones" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+			        </p:submenu>
+			        <p:separator />
+			        <p:submenu label="Vendas" >
+			        	<p:menuitem value="Usuários" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+			        </p:submenu>
+			    </p:panelMenu>
+			</h:form>
+	 	</p:layoutUnit>
+	 	
+	    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
+	        <h:outputText value="Right unit content." />Oeste
+	    </p:layoutUnit>
+	 	
+	 	<!-- Com o name, nós definimos qual a área dessa tela que irá ser exibida como templates -->
+	    <p:layoutUnit position="center" resizable="false" closable="false" collapsible="false">
+	        <ui:insert name="conteudo" />
+	    </p:layoutUnit>
+	</p:layout>
+	
+</h:body>
+</html>
