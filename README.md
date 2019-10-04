@@ -7,11 +7,11 @@ O projeto foi desenvolvido em JPA com banco de dados MySQL.
 
 PROJETO
 O projeto foi organizado nos pacotes:
-Bean
-Dao
-Domain
-main
-teste
+Bean, 
+Dao, 
+Domain, 
+main, 
+teste, 
 util
 
 Os arquivos xhtml foram aplicados no diretório:
